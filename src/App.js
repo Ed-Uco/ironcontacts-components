@@ -1,10 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-
+import React, { useState } from 'react';
+import Contacts from './components/Contacts';
 import contacts from './contacts.json';
 
 function App() {
-    const fiveContacts = contacts.slice(0, 5);
+    /* const fiveContacts = contacts.slice(0, 5);
 
     const [addContact, setAddContact] = useState(fiveContacts);
 
@@ -32,52 +31,11 @@ function App() {
             return b.popularity - a.popularity;
         });
         return setAddContact([...addContact, sortedPopular]);
-    };
-
+    }; */
     return (
-        <>
-            <div style={{ textAlign: 'center' }}>
-                <h1>Iron Contacts</h1>
-                <button onClick={() => randomContact(contacts)}>
-                    Add Random Contact
-                </button>
-                <button onClick={() => sortByName(addContact)}>
-                    Sort by Name
-                </button>
-                <button onClick={() => sortByPopularity(addContact)}>
-                    Sort by Popularity
-                </button>
-                <table style={{ margin: 'auto' }}>
-                    <th>
-                        <h1>Picture</h1>
-                    </th>
-                    <th>
-                        <h1>Name</h1>
-                    </th>
-                    <th>
-                        <h1>Popularity</h1>
-                    </th>
-                    <tbody>
-                        {addContact.map(elemento => {
-                            return (
-                                <tr key={elemento.id}>
-                                    <td>
-                                        <img
-                                            src={elemento.pictureUrl}
-                                            width="150"
-                                        />
-                                    </td>
-                                    <td>
-                                        <h2>{elemento.name}</h2>
-                                    </td>
-                                    <td>{elemento.popularity}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
-            </div>
-        </>
+        <div className="App">
+            <Contacts contacts={contacts} />
+        </div>
     );
 }
 
